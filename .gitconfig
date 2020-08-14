@@ -1,0 +1,9 @@
+[user]
+  name = "Hamza Tamenaoul"
+  email = "hamzatamenaoul@gmail.com"
+
+[color] 
+  ui = auto
+
+[core] 
+  editor = nvim
