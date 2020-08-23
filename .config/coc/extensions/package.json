@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "coc-clangd": ">=0.4.13",
-    "coc-tsserver": ">=1.5.4"
-  }
-}
