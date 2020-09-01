@@ -471,3 +471,5 @@ ex=:\
 *.pdf=:\
 *.nix=:\
 "
+
+tput smkx 

@@ -1,10 +1,20 @@
 set icons
+set previewer ~/.config/lf/preview
 
 cmd open ${{
     case $(file --mime-type $f -b) in
-        text/*) vim $fx;;
+        text/*) nvim $fx &;;
 	application/pdf) zathura $fx &;;
 	image/*) sxiv $fx &;;
         *) for f in $fx; do xdg-open $f > /dev/null 2> /dev/null & done;;
     esac
 }}
+
+cmd mkdir ${{
+  printf "Directory name: "
+  read name
+  mkdir $name
+}}
+
+map m 
+map md mkdir
