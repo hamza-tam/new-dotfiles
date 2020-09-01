@@ -1,0 +1,12 @@
+#window {
+  width: 30%;
+  height: 20%;
+}
+
+#horibox {
+  children: [listview];
+}
+
+#listview {
+  layout: horizontal;
+}

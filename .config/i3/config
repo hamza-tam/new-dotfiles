@@ -196,8 +196,13 @@ client.background       #FFFFFF
 # Setting the wallpaper
 exec feh --bg-scale /home/hamza/Pictures/Wallpapers/Wallpaper-01.jpg
 
-# Power rofi menu
-bindsym $mod+p exec ~/.scripts/power.sh
+# Custom scripts
+# Power
+bindsym $mod+p exec ~/.config/rofi/scripts/menu_powermenu.sh
+# Date
+bindsym $mod+t exec ~/.config/rofi/scripts/time.sh
+bindsym Print exec ~/.config/rofi/scripts/screenshot.sh
+
 
 # Launching Touchpad-indicator
 # exec touchpad-indicator
