@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:FiraCode Nerd Font 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -92,12 +92,15 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# Switch to previous workspace quickly
+bindsym Mod1+Tab workspace prev
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:"
+set $ws1 "1:"
 set $ws2 "2:"
 set $ws3 "3:"
-set $ws4 "4:"
+set $ws4 "4:"
 set $ws5 "5:"
 set $ws6 "6"
 set $ws7 "7"
@@ -181,10 +184,6 @@ hide_edge_borders smart
 bindsym $mod+q exec rofi -show run
 bindsym $mod+Tab exec rofi -show window
 
-# locking the screen
-bindsym Ctrl+Mod1+Delete exec i3lock-fancy
-
-
 # Colors for windows 
 client.focused          #4E6B82 #4E6B82 #FFFFFF #2E9EF4   #DE935F 
 client.focused_inactive #1E2731 #1E2731 #FFFFFF #484E50   #5F676A
@@ -194,8 +193,11 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 client.background       #FFFFFF
 
-# Loading the background
-exec feh --bg-scale /home/hamza/Pictures/Wallpapers/Wallpaper-02.jpg
+# Setting the wallpaper
+exec feh --bg-scale /home/hamza/Pictures/Wallpapers/Wallpaper-01.jpg
+
+# Power rofi menu
+bindsym $mod+p exec ~/.scripts/power.sh
 
 # Launching Touchpad-indicator
 # exec touchpad-indicator
@@ -205,9 +207,9 @@ exec syndaemon -i 1.0 -K -t -d
 # finds out, if available)
 bar {
 	i3bar_command i3bar --transparency 
-        status_command i3status 
+  status_command i3status 
 	strip_workspace_name no
- 	font pango:DejaVuSansMono Nerd Font 10
+ 	font pango:Iosevka Nerd Font Mono 12
 	
 	# Adding the hide bar
 	bindsym $mod+b bar mode
