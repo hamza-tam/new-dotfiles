@@ -210,7 +210,11 @@ bindsym $mod+p exec ~/.config/rofi/scripts/menu_powermenu.sh
 # Date
 bindsym $mod+t exec ~/.config/rofi/scripts/time.sh
 bindsym Print exec ~/.config/rofi/scripts/screenshot.sh
-#
+# Music controls
+bindsym XF86AudioPrev exec ~/.scripts/music-control.sh prev
+bindsym XF86AudioNext exec ~/.scripts/music-control.sh next
+bindsym XF86AudioPlay exec ~/.scripts/music-control.sh toggle
+
 # Launching Touchpad-indicator
 # exec touchpad-indicator
 exec syndaemon -i 1.0 -K -t -d
