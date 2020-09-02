@@ -13,9 +13,9 @@
 
 * {
   /* General */
-  text-font:                            "Comfortaa 14";
-  icon-font:                            "Hurmit Nerd Font Mono 48";
-  icon-font-small:                      "Hurmit Nerd Font Mono 24";
+  text-font:                            "FiraCode Nerd Font 14";
+  icon-font:                            "FiraCode Nerd Font 48";
+  icon-font-small:                      "FiraCode Nerd Font 24";
 
   option-6-listview-spacing:            10px;
 
