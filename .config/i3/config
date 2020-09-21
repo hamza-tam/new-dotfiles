@@ -13,7 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:FiraCode Nerd Font 8
+# font pango:FiraCode Nerd Font 8
+font pango:Samsung Sans 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -209,7 +210,7 @@ bindsym $mod+m exec ~/.scripts/menu.sh
 bindsym $mod+p exec ~/.config/rofi/scripts/menu_powermenu.sh
 # Date
 bindsym $mod+t exec ~/.config/rofi/scripts/time.sh
-bindsym Print exec ~/.config/rofi/scripts/screenshot.sh
+bindsym Print exec ~/.config/rofi/scripts/menu_screenshot.sh
 # Music controls
 bindsym XF86AudioPrev exec ~/.scripts/music-control.sh prev
 bindsym XF86AudioNext exec ~/.scripts/music-control.sh next
@@ -227,6 +228,7 @@ bar {
   status_command i3status 
 	strip_workspace_name no
  	font pango:Iosevka Nerd Font Mono 12
+ 	# font pango:Samsung Sans 11
 	
 	# Adding the hide bar
 	bindsym $mod+b bar mode

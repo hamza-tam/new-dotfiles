@@ -3,8 +3,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
   " Plugin outside ~/.vim/plugged with post-update hook
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-  Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
   Plug 'pbrisbin/vim-mkdir'
   Plug 'tpope/vim-fugitive'
@@ -14,6 +13,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'sainnhe/gruvbox-material'
   Plug 'sonph/onehalf', {'rtp': 'vim/'}
   Plug 'mhartington/oceanic-next'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'lifepillar/vim-solarized8'
 
   " Use release branch (Recommend)
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -205,9 +206,9 @@ set termguicolors
 
 syntax on
 set t_Co=256
-set cursorline
+" set cursorline
 " for dark version
-set background=dark
+set background=light
 
 " set contrast
 " this configuration option should be placed before `colorscheme gruvbox-material`
@@ -215,8 +216,9 @@ set background=dark
 " let g:gruvbox_material_background = 'hard'
 " colorscheme gruvbox-material
 
-colorscheme OceanicNext
-let g:airline_theme='OceanicNext'
+colorscheme solarized8_low
+let g:airline_solarized_bg='dark'
+let g:solarized_termcolors=256
 
 set wildmode=longest,list,full
 set tabstop=2
@@ -246,3 +248,37 @@ xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<
 nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>
 
 set nofoldenable
+
+nnoremap <f2> :set paste!<CR>
+nnoremap <f5> :make<CR>
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+
+if has('nvim')
+  autocmd TermOpen * setlocal nonumber norelativenumber
+  tnoremap <A-[> <C-\><C-N>
+  tnoremap <C-h> <C-\><C-N><C-w>h
+  tnoremap <C-j> <C-\><C-N><C-w>j
+  tnoremap <C-k> <C-\><C-N><C-w>k
+  tnoremap <C-l> <C-\><C-N><C-w>l
+endif
+
+function! Create_cp_env()
+  let s:file = @%
+  vsp makefile
+  wincmd L
+  execute "normal! ggdGiall:\<CR>g++ -o prog ".s:file." && ./prog < input.txt > output.txt\<CR>\<CR>clean:\<CR>rm -rf prog makefile input.txt output.txt\<ESC>gg"
+  w
+  sp output.txt
+  w
+  set number!
+  sp input.txt
+  w
+  wincmd h
+endfunction
+
+nnoremap <leader>cp :call Create_cp_env()<CR>
