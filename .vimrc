@@ -1,5 +1,5 @@
+" Plugins
 call plug#begin('~/.vim/plugged')
-
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
   " Plugin outside ~/.vim/plugged with post-update hook
@@ -14,8 +14,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'sonph/onehalf', {'rtp': 'vim/'}
   Plug 'mhartington/oceanic-next'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'lifepillar/vim-solarized8'
-
+  Plug 'lifepillar/vim-solarized8' 
   " Use release branch (Recommend)
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'vim-airline/vim-airline'
@@ -42,8 +41,16 @@ call plug#begin('~/.vim/plugged')
   Plug 'pangloss/vim-javascript'
   Plug 'leafgarland/typescript-vim'
 
+  Plug 'tpope/vim-surround'
+  Plug 'vim-test/vim-test'
+  Plug 'preservim/tagbar'
+
+  Plug 'honza/vim-snippets'
+
+  Plug 'nicwest/vim-http'
 call plug#end()
 
+" coc.nvim Config
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -185,7 +192,14 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" Remap for do codeAction of selected region
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>
 
+" Custom config
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
@@ -200,6 +214,7 @@ map <C-f> :CocFix<CR>
 
 set encoding=UTF-8
 set number
+set linebreak
 
 " important!!
 set termguicolors
@@ -240,18 +255,13 @@ let g:NERDTreeStatusline = ''
 
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 
-" Remap for do codeAction of selected region
-function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>
 
-set nofoldenable
-
+" Function keys shortcuts
 nnoremap <f2> :set paste!<CR>
-nnoremap <f5> :make<CR>
+nnoremap <f3> :set hls!<CR>
+nnoremap <f1> :make<CR>
 
+" Moving between windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -260,13 +270,19 @@ nnoremap <C-l> <C-w>l
 
 if has('nvim')
   autocmd TermOpen * setlocal nonumber norelativenumber
-  tnoremap <A-[> <C-\><C-N>
+  autocmd BufWinEnter,WinEnter term://* startinsert
+  autocmd TermOpen * startinsert
   tnoremap <C-h> <C-\><C-N><C-w>h
   tnoremap <C-j> <C-\><C-N><C-w>j
   tnoremap <C-k> <C-\><C-N><C-w>k
   tnoremap <C-l> <C-\><C-N><C-w>l
+  tnoremap <C-w><C-[> <C-\><C-N>
+  nnoremap <C-\> :bel 10sp term://bash<CR>
 endif
 
+nmap <F8> :TagbarToggle<CR>
+
+" vim-cp custom plugin
 function! Create_cp_env()
   let s:file = @%
   vsp makefile
@@ -282,3 +298,15 @@ function! Create_cp_env()
 endfunction
 
 nnoremap <leader>cp :call Create_cp_env()<CR>
+
+" Mapping to be able to move line up or down
+xnoremap <C-K> :m '<-2<CR>gv=gv
+xnoremap <C-J> :m '>+1<CR>gv=gv
+
+" Git shortcuts
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gp :Gpush<CR>
+
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+packadd! vimspector

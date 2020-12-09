@@ -37,7 +37,7 @@ bindsym $mod+Return exec st
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -91,19 +91,19 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 # Switch to previous workspace quickly
 bindsym Mod1+Tab workspace prev
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3:"
-set $ws4 "4:"
-set $ws5 "5:"
-set $ws6 "6"
+set $ws1 "1:WWW"
+set $ws2 "2:DEV"
+set $ws3 "3:TERM"
+set $ws4 "4:MUSC"
+set $ws5 "5:FILE"
+set $ws6 "6:VM"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
@@ -227,8 +227,10 @@ bar {
   tray_output primary
   status_command i3status 
 	strip_workspace_name no
- 	font pango:Iosevka Nerd Font Mono 12
+ 	font pango:FiraCode Nerd Font Mono 11
  	# font pango:Samsung Sans 11
+  
+  strip_workspace_numbers yes
 	
 	# Adding the hide bar
 	bindsym $mod+b bar mode
@@ -245,3 +247,29 @@ bar {
 	    binding_mode       #1E2731 #A54242 #FFFFFF
 	}
 }
+
+# Some config
+title_align center
+
+# Having floating and sticky camera on screen
+for_window [title="video0 - mpv"] floating enable
+for_window [title="video0 - mpv"] sticky enable
+
+for_window [class="mpv"] floating enable
+
+# Having a floating terminal on demand
+for_window [class="dropdown"] floating enable
+for_window [class="dropdown"] resize set 1200 500
+for_window [class="dropdown"] move to scratchpad
+for_window [class="dropdown"] border pixel 0
+exec --no-startup-id "st -c dropdown"
+bindsym $mod+Shift+Return   [class="dropdown"] scratchpad show; [class="dropdown"] move position center
+
+# Having a terminal for video recordings
+for_window [class="recording"] floating enable
+for_window [class="recording"] resize set 1280 720
+for_window [class="recording"] floating enable
+for_window [class="recording"] move position center
+
+# Selecting emoji
+bindsym $mod+y exec rofimoji -c

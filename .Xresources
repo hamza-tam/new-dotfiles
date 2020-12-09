@@ -1,7 +1,7 @@
 ! special
 *.foreground:   #c5c8c6
 *.background:   #1e2731
-*.cursorColor:  #c5c8c6
+
 
 ! black
 *.color0:       #282a2e
@@ -41,10 +41,10 @@
 ! Extensions
 URxvt.perl-ext-common:          default,matcher,vtwheel,clipboard
 ! Looks
-! URxvt*font:                     xft:FiraCode Nerd Font Mono:size=12
+URxvt*font:                     xft:FiraCode Nerd Font Mono:size=12
 ! URxvt*font:                     xft:agave Nerd Font Mono:style=SemiBold:size=14 */
 ! URxvt.font:                     xft:Iosevka:size=14:minspace=False
-URxvt.font:                     xft:Iosevka Nerd Font Mono:size=14:minspace=False
+! URxvt.font:                     xft:Iosevka Nerd Font Mono:size=14:minspace=False
 URxvt.letterspace:		-1
 URxvt.scrollBar:                false
 URxvt.internalBorder:           10
@@ -70,7 +70,7 @@ rofi.opacity:                        100
 rofi.width:                          50
 rofi.lines:                          8
 rofi.columns:                        1
-rofi.font:                           FiraCode Nerd Font 13
+rofi.font:                           Consolas NF 13
 rofi.fg:                             #5294E2
 rofi.bg:                             {background}
 rofi.fg-active:                      #34405a
