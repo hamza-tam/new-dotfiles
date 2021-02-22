@@ -167,6 +167,7 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
+        bindsym Ctrl+[ mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -240,7 +241,7 @@ bar {
 	    statusline #FFFFFF
 	    separator  #3D3D3D
 
-	    focused_workspace  #DE935F #DE935F #FFFFFF
+	    focused_workspace  #3C73A8 #3c73a8 #FFFFFF
 	    active_workspace   #1E2731 #1E2731 #FFFFFF
 	    inactive_workspace #1E2731 #1E2731 #888888
 	    urgent_workspace   #1E2731 #A54242 #FFFFFF
