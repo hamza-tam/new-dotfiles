@@ -164,23 +164,8 @@ tput smkx
 #
 
 # Alias for dotfiles bare git repo
-alias dotfiles='/usr/bin/git --git-dir=/home/hamza/.dotfiles.git/ --work-tree=/home/hamza/'
+alias dotfiles='/usr/bin/git --git-dir=/home/hamza/.dotfiles/ --work-tree=/home/hamza/'
 
 alias v="nvim"
 alias vim="nvim"
 alias ci3="nvim ~/.config/i3/config"
-
-# Spark environment variables
-export SPARK_HOME=/home/hamza/Downloads/spark-3.0.1-bin-hadoop2.7
-export PYTHONPATH="${SPARK_HOME}"/python/:$PYTHONPATH"
-export PYTHONPATH="${SPARK_HOME}"/python/lib/py4j-0.10.9-src.zip:$PYTHONPATH"
-export PATH=${SPARK_HOME}/bin:$PATH
-
-export CADP=${HOME}/cadp
-export PATH=${CADP}/bin:$PATH
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/hamza/tools/google-cloud-sdk/path.bash.inc' ]; then . '/home/hamza/tools/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/hamza/tools/google-cloud-sdk/completion.bash.inc' ]; then . '/home/hamza/tools/google-cloud-sdk/completion.bash.inc'; fi
