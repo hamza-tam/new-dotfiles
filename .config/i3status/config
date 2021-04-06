@@ -17,14 +17,14 @@ order += "load"
 order += "tztime local"
 
 wireless wlp1s0 {
-# format_up = " 直 (%quality at %essid, %bitrate) %ip "
-  format_up = " 直%quality %essid "
-    format_down = " 睊 down "
+# format_up   = " 直 (%quality at %essid, %bitrate) %ip "
+  format_up   = " 直%quality %essid "
+  format_down = " 睊 down "
 }
 
 ethernet eth0 {
   format_up = "  %ip "
-    format_down = "  down "
+  format_down = "  down "
 }
 
 battery 0 {
@@ -39,7 +39,7 @@ battery 0 {
 }
 
 tztime local {
-  format = " %Y-%m-%d %H:%M ﲊ "
+  format = " %Y-%m-%d %H:%M  "
 }
 
 load {
