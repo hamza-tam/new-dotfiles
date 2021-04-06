@@ -147,21 +147,10 @@ set -o vi
 
 tput smkx 
 
-# Change working dir in shell to last dir in lf on exit (adapted from ranger).
-#
-# You need to either copy the content of this file to your shell rc file
-# (e.g. ~/.bashrc) or source this file directly:
-#
-#     LFCD="/path/to/lfcd.sh"
-#     if [ -f "$LFCD" ]; then
-#         source "$LFCD"
-#     fi
-#
-# You may also like to assign a key to this command:
-#
-     bind '"\C-o":"lfcd\C-m"'  # bash
-#     bindkey -s '^o' 'lfcd\n'  # zsh
-#
+# Function to auto cd to directory when creating it
+mkcd() {
+  mkdir $1 && cd $1
+}
 
 # Alias for dotfiles bare git repo
 alias dotfiles='/usr/bin/git --git-dir=/home/hamza/.dotfiles/ --work-tree=/home/hamza/'
@@ -169,3 +158,9 @@ alias dotfiles='/usr/bin/git --git-dir=/home/hamza/.dotfiles/ --work-tree=/home/
 alias v="nvim"
 alias vim="nvim"
 alias ci3="nvim ~/.config/i3/config"
+
+# NNN related variables 
+export READER="zathura"
+export NNN_TRASH=1
+export NNN_PLUG="m:nmount"
+export NNN_BMS="m:/media/"
